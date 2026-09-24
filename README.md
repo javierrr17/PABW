@@ -13,4 +13,4 @@ Topik halaman saya: Halaman profil pribadi dan portofolio.
 
 ## Catatan penggunaan AI
 
-Penggunaan AI
+Penggunaan AI dalam pencocokan warna desain css yang cocok untuk saya presisi

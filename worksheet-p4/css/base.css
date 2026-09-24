@@ -1,0 +1,35 @@
+/* ===================================================================
+   BASE.CSS — Lembar E: berlaku untuk seluruh halaman
+   =================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;      /* width sudah mencakup padding + border */
+}
+
+* { margin: 0; }                /* jarak diatur sengaja lewat gap, bukan warisan */
+
+img { max-width: 100%; height: auto; display: block; }
+
+html {
+  font-size: 100%;              /* ikuti pengaturan pengguna, jangan dipatok px */
+}
+
+body {
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--color-fg);
+  background: var(--color-bg);
+  padding: var(--space-4);
+}
+
+h1 { font-size: var(--text-3xl); line-height: 1.15; }
+h2 { font-size: var(--text-xl);  line-height: 1.25; margin-bottom: var(--space-3); }
+h3 { font-size: var(--text-md);  margin-bottom: var(--space-2); }
+
+a { color: var(--color-primary); }
+
+/* Batasi panjang baris supaya mata mudah berpindah baris */
+main p { max-width: 60ch; }
+
+ul, ol { padding-left: 1.25rem; }

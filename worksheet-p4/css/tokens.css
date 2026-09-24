@@ -1,0 +1,51 @@
+/* ===================================================================
+   TOKENS.CSS — Lembar C dan D
+   Arah visual: "Tegas dan teknis" — navy nyaris hitam + teal.
+   Warna diambil dari kesan foto profil (nuansa gelap, formal).
+   ATURAN: dua lapis :root. Primitif dulu, semantik sesudahnya.
+   Komponen HANYA boleh memakai nama di lapis kedua (semantik).
+   =================================================================== */
+
+/* LAPIS 1 — PRIMITIF: nilai mentah, tidak menyebut peran apa pun */
+:root {
+  --navy-900:  #0B1220;
+  --navy-700:  #16233F;
+  --teal-700:  #0F766E;
+  --teal-400:  #2DD4BF;
+  --gray-50:   #F4F6F8;
+  --slate-500: #64748B;   /* dipakai untuk border — cukup gelap agar lolos 3:1 di kedua tema */
+  --gray-900:  #10151F;
+  --red-700:   #B00020;
+  --amber-400: #FFC000;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --radius-md:   0.5rem;
+  --radius-full: 999px;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, .10);
+
+  --text-sm:  0.875rem;
+  --text-md:  1rem;
+  --text-xl:  1.5rem;
+  --text-3xl: 2.25rem;
+}
+
+/* LAPIS 2 — SEMANTIK: peran. Isinya mengacu ke lapis 1.
+   Blok inilah yang ditimpa ulang di tema.css untuk mode gelap. */
+:root {
+  --color-bg:      var(--gray-50);
+  --color-fg:      var(--navy-900);
+  --color-surface: #FFFFFF;
+  --color-border:  var(--slate-500);
+  --color-primary:    var(--teal-700);
+  --color-on-primary: #FFFFFF;   /* warna teks di atas --color-primary */
+  --color-danger:  var(--red-700);
+  --color-focus:   var(--teal-700);
+
+  --card-pad:    var(--space-4);
+  --section-gap: var(--space-6);
+}

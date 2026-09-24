@@ -1,0 +1,37 @@
+/* ===================================================================
+   TEMA.CSS — Lembar H: tema gelap
+   Hanya lapis semantik yang ditukar. Tidak ada komponen yang disentuh.
+   =================================================================== */
+
+/* --- Ikut pengaturan sistem pengguna --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:      var(--gray-900);
+    --color-fg:      #E2E8F0;
+    --color-surface: var(--navy-700);
+    --color-border:  var(--slate-500); /* sudah lolos 3:1 di kedua tema, tak perlu diganti */
+    --color-primary: var(--teal-400);
+    --color-on-primary: var(--navy-900); /* teal-400 terang → butuh teks gelap, bukan putih */
+    --color-danger:  #FF8A8A;
+    --color-focus:   var(--amber-400);
+    --shadow-1:      0 1px 3px rgba(0, 0, 0, .45);
+  }
+}
+
+/* --- Pilihan manual HARUS berada SETELAH blok media query di atas,
+       supaya menang saat keduanya menyala bersamaan. --- */
+:root:has(#tema:checked) {
+  --color-bg:      var(--gray-900);
+  --color-fg:      #E2E8F0;
+  --color-surface: var(--navy-700);
+  --color-border:  var(--slate-500); /* sudah lolos 3:1 di kedua tema, tak perlu diganti */
+  --color-primary: var(--teal-400);
+  --color-on-primary: var(--navy-900);
+  --color-danger:  #FF8A8A;
+  --color-focus:   var(--amber-400);
+  --shadow-1:      0 1px 3px rgba(0, 0, 0, .45);
+}
+
+/* Tombol pengalih mengubah label sesuai keadaannya */
+.tombol-tema::before { content: "🌙 Tema gelap"; }
+:root:has(#tema:checked) .tombol-tema::before { content: "☀️ Tema terang"; }

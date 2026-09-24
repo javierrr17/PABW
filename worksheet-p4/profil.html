@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--
+  KERANGKA PROFIL — PABW 2026/2027 — Pertemuan 4
+  ==================================================================
+  Berkas ini SUDAH LENGKAP dan sudah lolos W3C Nu Html Checker serta
+  Lighthouse Accessibility. JANGAN mengubah struktur, landmark, label,
+  atau alt untuk memperbaiki tampilan — tampilan diubah dari berkas CSS.
+
+  Tugas Anda di Pertemuan 4:
+    1. Ganti isi yang ditandai  [ISI]  dengan milik Anda sendiri.
+    2. Buat lima berkas CSS di folder css/ lalu buka komentar
+       lima baris <link> di bawah  (lihat Lembar D).
+    3. WAJIB — tambahkan MINIMAL TIGA bagian baru di dalam <main>,
+       masing-masing memakai elemen semantik yang belum terpakai dan
+       berbeda satu sama lain  (lihat Lembar B.3). Setiap bagian wajib
+       diberi gaya memakai token yang sama, lalu dievaluasi W3C dan WCAG.
+-->
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <!-- ISI 1 — judul tab dan hasil pencarian. Ganti dengan nama Anda. -->
+  <title>Profil Firstly Javierrazel Hermawan — PABW 2026/2027</title>
+  <meta name="description" content="Halaman profil mahasiswa PABW: tentang saya, karya, dan kontak.">
+
+  <!-- LEMBAR D — buat lima berkas di folder css/, lalu buka komentar ini.
+       URUTAN PEMUATAN MENENTUKAN CASCADE: tokens, base, layout, komponen, tema.
+       Lapisan paling bawah menang tanpa perlu !important. -->
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/komponen.css">
+<link rel="stylesheet" href="css/tema.css">
+</head>
+<body>
+  <a class="lewati" href="#utama">Lewati ke konten utama</a>
+
+  <header class="kepala">
+    <!-- Lembar H.2 — pengalih tema, murni CSS lewat :has(), tanpa JavaScript. -->
+    <input type="checkbox" id="tema" class="pengalih-tema">
+    <label for="tema" class="tombol-tema"><span class="ikon-tema" aria-hidden="true"></span> Ganti tema terang/gelap</label>
+
+    <!-- ISI 2 — nama Anda, atau nama panggilan yang Anda pakai. -->
+    <h1>Firstly Javierrazel Hermawan</h1>
+    <!-- ISI 3 — satu kalimat tentang diri Anda. -->
+    <p class="tagline">Mahasiswa Informatika Universitas Islam Indonesia.</p>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#karya">Karya</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="utama">
+
+    <section id="tentang">
+      <h2>Tentang saya</h2>
+
+      <figure class="foto">
+        <!-- ISI 4 — pakai foto Anda sendiri dengan nama berkas yang sama,
+             atau biarkan berkas contoh apa adanya. -->
+        <img src="media/Foto%20Saya.jpeg"
+     alt="Foto diri Firstly Javierrazel Hermawan memakai kemeja putih."
+     width="340" height="500" loading="lazy">
+        <figcaption></figcaption>
+      </figure>
+
+      <!-- ISI 5 — dua sampai tiga kalimat: asal, minat, dan hal yang
+           sedang Anda pelajari. -->
+      <p>Saya mahasiswa Program Studi Informatika Universitas Islam Indonesia, Saya terdorong oleh visi besar untuk berkarier sebagai AI Engineer dan menciptakan inovasi berbasis kecerdasan buatan.
+        Saat ini saya juga mendalami pengembangan web dan UI/UX.
+      </p>
+
+      <table>
+        <!-- ISI 6 — judul tabel dan isi minimal tiga baris. -->
+        <caption>Kegiatan saya</caption>
+        <thead>
+          <tr>
+            <th scope="col">Kegiatan</th>
+            <th scope="col">Peran</th>
+            <th scope="col">Waktu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Osis</th>
+            <td>Wakil ketua 2</td>
+            <td><time datetime="2026-09">2022/2023</time></td>
+          </tr>
+          <tr>
+            <th scope="row">Majelis Perwakilan Kelas</th>
+            <td>Ketua 1</td>
+            <td><time datetime="2026-10">2024/2025</time></td>
+          </tr>
+          <tr>
+            <th scope="row">Laboratorium Rekayasa Perangkat Lunak</th>
+            <td>Asisten Praktikum</td>
+            <td><time datetime="2026-08">2026/2027</time></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="karya">
+      <h2>Karya saya</h2>
+      <!-- ISI 7 — tiga karya, proyek, atau hal yang pernah Anda buat.
+           Boleh tugas kuliah, karya pribadi, atau hobi. -->
+      <ul>
+        <li>Desain Aplikasi Mental Health  — Mental Health Screening, 2026.</li>
+        <li>Aplikasi Laundry — Zippy, 2026.</li>
+        <li>Website Laporan keuntungan dan kerugian — RC, 2026.</li>
+      </ul>
+    </section>
+
+    <section id="kontak">
+      <h2>Hubungi saya</h2>
+      <p>Isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
+
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Data pengirim</legend>
+
+          <p>
+            <label for="nama">Nama lengkap</label>
+            <input id="nama" name="nama" type="text"
+                   autocomplete="name" required>
+          </p>
+
+          <p>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" required>
+          </p>
+
+          <p>
+            <label for="nim">NIM</label>
+            <!-- ISI 8 — ganti angka di dalam pattern dengan NIM Anda sendiri. -->
+            <input id="nim" name="nim" type="text" inputmode="numeric"
+                   pattern="[0-9]{8}" aria-describedby="nim-bantuan" required>
+            <span id="nim-bantuan">Delapan digit angka, contoh 105230102.</span>
+          </p>
+
+          <p>
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" rows="4" required></textarea>
+          </p>
+
+          <button type="submit">Kirim</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- STRUKTUR TAMBAHAN (Lembar B.3) — tiga bagian baru, elemen semantik
+         berbeda satu sama lain, id belum terpakai, digayakan lewat token
+         yang sama di komponen.css. -->
+
+    <section id="keterampilan">
+      <h2>Keterampilan</h2>
+      <dl class="keterampilan">
+        <dt>Bahasa Pemrograman</dt>
+        <dd>Java, Python, R, HTML, CSS.</dd>
+        <dt>Spesialisasi &amp; Alat</dt>
+        <dd>UI/UX Design (Figma), Git, VS Code, Pengembangan Web Dasar.</dd>
+      </dl>
+    </section>
+
+    <section id="tanya-jawab">
+      <h2>Tanya jawab</h2>
+      <details>
+        <summary>Apa fokus karier utama saya?</summary>
+        <p>Saya berfokus untuk menjadi AI Engineer serta mengembangkan solusi berbasis kecerdasan buatan dan web UI/UX.</p>
+      </details>
+      <details>
+        <summary>Teknologi apa yang sedang dipelajari saat ini?</summary>
+        <p>Pengembangan web berbasis design token, struktur data, dan arsitektur CSS modern.</p>
+      </details>
+    </section>
+
+    <section id="kutipan">
+      <h2>Prinsip</h2>
+      <figure class="kutipan">
+        <blockquote>
+          <p>Teknologi dan desain yang baik adalah yang memberikan dampak nyata serta dapat diakses oleh siapa saja.</p>
+        </blockquote>
+        <figcaption>— Firstly Javierrazel Hermawan</figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer class="kaki">
+    <!-- ISI 9 — nama, NIM, tahun. -->
+    <p>Firstly Javierrazel Hermawan · 25523158 · <time datetime="2026">2026</time></p>
+  </footer>
+</body>
+</html>
+
+
+

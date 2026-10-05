@@ -22,6 +22,21 @@ const formatKeahlian = (daftar) => daftar.join(" · ");
 
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
-console.log(buatPerkenalan({ nama: "Javier", peran: "UI/UX Designer" }));
-console.log(buatPerkenalan({ nama: "Razel", peran: "Project Manager" }));
-console.log(formatKeahlian(["Java", "Python", "R"]));
+
+const daftarProyek = [
+  { judul: "Halaman Profil", tahun: 2026, selesai: true },
+  { judul: "Katalog Produk", tahun: 2026, selesai: false },
+];
+
+console.log(daftarProyek[0]);
+console.log(daftarProyek[0].judul);
+
+console.table(profil.keahlian);
+console.table(daftarProyek);
+
+const selesai = daftarProyek.filter((proyek) => proyek.selesai);
+console.table(selesai);
+
+const katalog = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
+console.log(katalog);
+

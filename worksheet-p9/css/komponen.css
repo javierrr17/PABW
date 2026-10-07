@@ -139,3 +139,8 @@ form p:has(:user-invalid)::after {
   color: var(--color-fg);
 }
 .kutipan cite { font-style: normal; font-weight: 600; }
+
+.aktif {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

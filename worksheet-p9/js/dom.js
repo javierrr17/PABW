@@ -1,10 +1,20 @@
 import { daftarProyek } from "./app.js";
 
-// Mengambil elemen yang sudah didaftarkan pada Tabel A.3
-const elDaftar = document.querySelector("#daftar");
-const elFilter = document.querySelector("#filter");
-const elPesanKosong = document.querySelector("#pesan-kosong");
-const elForm = document.querySelector("form");
+const wadah = document.querySelector("#daftar");
+const kosong = document.querySelector("#pesan-kosong");
 
-// Verifikasi di console
-console.log("Data proyek berhasil diimpor:", daftarProyek);
+function buatKartu(proyek) {
+  const li = document.createElement("li");
+  li.className = "kartu";
+  li.textContent = proyek.judul;
+  return li;
+}
+
+// Fungsi render daftar proyek
+function tampilkanDaftar(daftar) {
+  wadah.textContent = "";
+
+  daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));
+}
+
+tampilkanDaftar(daftarProyek);

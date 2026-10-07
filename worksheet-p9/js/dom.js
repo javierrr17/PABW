@@ -1,41 +1,53 @@
-import { daftarProyek } from "./app.js";
+// D.2 Seleksi Elemen Formulir
+const elForm = document.querySelector("form");
+const inputNama = document.querySelector("#nama");
+const inputEmail = document.querySelector("#email");
+const inputNim = document.querySelector("#nim");
+const inputPesan = document.querySelector("#pesan");
+const tombolSubmit = elForm.querySelector("button[type='submit']");
 
-const wadah = document.querySelector("#daftar");
-const kosong = document.querySelector("#pesan-kosong");
-const barisFilter = document.querySelector("#filter");
+// Fungsi memeriksa keabsahan seluruh kolom input
+function validasiForm() {
+  const namaValid = inputNama.value.trim() !== "";
+  const emailValid = inputEmail.checkValidity() && inputEmail.value.trim() !== "";
+  const nimValid = inputNim.checkValidity() && inputNim.value.trim() !== "";
+  const pesanValid = inputPesan.value.trim() !== "";
 
-function buatKartu(proyek) {
-  const li = document.createElement("li");
-  li.className = "kartu";
-  li.textContent = proyek.judul;
-  return li;
+  // Set atribut accessibility aria-invalid
+  inputNama.setAttribute("aria-invalid", !namaValid);
+  inputEmail.setAttribute("aria-invalid", !emailValid);
+  inputNim.setAttribute("aria-invalid", !nimValid);
+  inputPesan.setAttribute("aria-invalid", !pesanValid);
+
+  const sah = namaValid && emailValid && nimValid && pesanValid;
+  tombolSubmit.disabled = !sah;
+
+  return { sah, namaValid, emailValid, nimValid, pesanValid };
 }
 
-function render(daftar) {
-  wadah.textContent = ""; 
-  daftar.forEach((proyek) => wadah.append(buatKartu(proyek)));
-}
+// Jalankan validasi setiap kali pengguna mengetik (event input)
+elForm.addEventListener("input", () => {
+  validasiForm();
+});
 
-// C.2 Fungsi untuk menandai tombol yang sedang aktif
-function tandaiTombolAktif(tombolAktif) {
-  document.querySelectorAll("#filter button").forEach((tombol) => {
-    tombol.classList.toggle("aktif", tombol === tombolAktif);
-  });
-}
+// Penanganan submit formulir
+elForm.addEventListener("submit", (event) => {
+  // 1. Hentikan pengiriman bawaan peramban
+  event.preventDefault();
 
-// Tampilkan semua proyek di awal
-render(daftarProyek);
+  const hasilValidasi = validasiForm();
 
-// C.1 & C.2 Event Listener Filter
-barisFilter.addEventListener("click", (event) => {
-  const tombol = event.target.closest("button");
-  if (!tombol) return;
+  // Jika ada kolom tidak valid, arahkan kursor ke kolom bermasalah pertama
+  if (!hasilValidasi.sah) {
+    if (!hasilValidasi.namaValid) inputNama.focus();
+    else if (!hasilValidasi.emailValid) inputEmail.focus();
+    else if (!hasilValidasi.nimValid) inputNim.focus();
+    else if (!hasilValidasi.pesanValid) inputPesan.focus();
+    return;
+  }
 
-  const kategori = tombol.dataset.kategori;
-  const terpilih = daftarProyek.filter(
-    (proyek) => kategori === "semua" || proyek.kategori === kategori
-  );
-
-  render(terpilih);
-  tandaiTombolAktif(tombol); // Menandai tombol yang baru saja diklik
+  // Jika seluruh kolom valid
+  alert("Pesan berhasil dikirim!");
+  elForm.reset();
+  validasiForm(); // Reset status tombol setelah form dikosongkan
 });

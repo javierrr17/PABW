@@ -42,13 +42,31 @@ console.log(katalog);
 
 import { ambilNotisia } from './api.js';
 
-async function jalankan() {
+const wadah = document.querySelector('#daftar');
+
+function gambar(daftar) {
+  wadah.textContent = '';
+  daftar.forEach(function (n) {
+    const kartu = document.createElement('article');
+    const judul = document.createElement('h3');
+    judul.textContent = n.titulu;
+    kartu.appendChild(judul);
+    wadah.appendChild(kartu);
+  });
+}
+
+async function tampilkan() {
+  wadah.textContent = 'Memuat...';
   try {
-    const data = await ambilNotisia();
-    console.log('Data sukses:', data);
+    const daftar = await ambilNotisia();
+    if (daftar.length === 0) {
+      wadah.textContent = 'Belum ada notisia';
+      return;
+    }
+    gambar(daftar);
   } catch (galat) {
-    console.error('Galat tertangkap di app.js:', galat.message);
+    wadah.textContent = 'Gagal memuat data: ' + galat.message;
   }
 }
 
-jalankan();
+tampilkan();

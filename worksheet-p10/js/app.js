@@ -39,3 +39,16 @@ console.table(selesai);
 
 const katalog = daftarProyek.find((proyek) => proyek.judul === "Katalog Produk");
 console.log(katalog);
+
+import { ambilNotisia } from './api.js';
+
+async function jalankan() {
+  try {
+    const data = await ambilNotisia();
+    console.log('Data sukses:', data);
+  } catch (galat) {
+    console.error('Galat tertangkap di app.js:', galat.message);
+  }
+}
+
+jalankan();

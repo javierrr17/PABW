@@ -1,13 +1,16 @@
-import { state, pilihKategori } from "./state.js";
+import { state, pilihKategori, aturUlang, muat } from "./state.js";
 import { render } from "./dom.js";
 import { inisialisasiEvent } from "./events.js";
 
-// Render awal menggunakan objek state utuh sesuai petunjuk C.2
+// 1. Render awal saat halaman dimuat
 render(state);
 
-// Jalankan listener event
+// 2. Jalankan event listener
 inisialisasiEvent();
 
-// Tempel ke objek window agar bisa diuji via Console browser
+// 3. Tempelkan fungsi & state ke window agar bisa diuji di DevTools Console
 window.state = state;
 window.pilihKategori = pilihKategori;
+window.aturUlang = aturUlang;
+window.muat = muat; 
+window.render = render;

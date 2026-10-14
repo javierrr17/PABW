@@ -5,46 +5,30 @@
   Berkas ini SUDAH LENGKAP dan sudah lolos W3C Nu Html Checker serta
   Lighthouse Accessibility. JANGAN mengubah struktur, landmark, label,
   atau alt untuk memperbaiki tampilan — tampilan diubah dari berkas CSS.
-
-  Tugas Anda di Pertemuan 4:
-    1. Ganti isi yang ditandai  [ISI]  dengan milik Anda sendiri.
-    2. Buat lima berkas CSS di folder css/ lalu buka komentar
-       lima baris <link> di bawah  (lihat Lembar D).
-    3. WAJIB — tambahkan MINIMAL TIGA bagian baru di dalam <main>,
-       masing-masing memakai elemen semantik yang belum terpakai dan
-       berbeda satu sama lain  (lihat Lembar B.3). Setiap bagian wajib
-       diberi gaya memakai token yang sama, lalu dievaluasi W3C dan WCAG.
 -->
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <!-- ISI 1 — judul tab dan hasil pencarian. Ganti dengan nama Anda. -->
   <title>Profil Firstly Javierrazel Hermawan — PABW 2026/2027</title>
   <meta name="description" content="Halaman profil mahasiswa PABW: tentang saya, karya, dan kontak.">
 
-  <!-- LEMBAR D — buat lima berkas di folder css/, lalu buka komentar ini.
-       URUTAN PEMUATAN MENENTUKAN CASCADE: tokens, base, layout, komponen, tema.
-       Lapisan paling bawah menang tanpa perlu !important. -->
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/komponen.css">
-<link rel="stylesheet" href="css/tema.css">
-<link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/komponen.css">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="icon" href="data:,">
 </head>
 <body>
   <a class="lewati" href="#utama">Lewati ke konten utama</a>
 
   <header class="kepala">
-    <!-- Lembar H.2 — pengalih tema, murni CSS lewat :has(), tanpa JavaScript. -->
     <input type="checkbox" id="tema" class="pengalih-tema">
     <label for="tema" class="tombol-tema"><span class="ikon-tema" aria-hidden="true"></span> Ganti tema terang/gelap</label>
 
-    <!-- ISI 2 — nama Anda, atau nama panggilan yang Anda pakai. -->
     <h1>Firstly Javierrazel Hermawan</h1>
-    <!-- ISI 3 — satu kalimat tentang diri Anda. -->
     <p class="tagline">Mahasiswa Informatika Universitas Islam Indonesia.</p>
     <nav aria-label="Navigasi utama">
       <ul>
@@ -61,22 +45,17 @@
       <h2>Tentang saya</h2>
 
       <figure class="foto">
-        <!-- ISI 4 — pakai foto Anda sendiri dengan nama berkas yang sama,
-             atau biarkan berkas contoh apa adanya. -->
         <img src="media/Foto%20Saya.jpeg"
-     alt="Foto diri Firstly Javierrazel Hermawan memakai kemeja putih."
-     width="340" height="500" loading="lazy">
+             alt="Foto diri Firstly Javierrazel Hermawan memakai kemeja putih."
+             width="340" height="500" loading="lazy">
         <figcaption></figcaption>
       </figure>
 
-      <!-- ISI 5 — dua sampai tiga kalimat: asal, minat, dan hal yang
-           sedang Anda pelajari. -->
       <p>Saya mahasiswa Program Studi Informatika Universitas Islam Indonesia, Saya terdorong oleh visi besar untuk berkarier sebagai AI Engineer dan menciptakan inovasi berbasis kecerdasan buatan.
         Saat ini saya juga mendalami pengembangan web dan UI/UX.
       </p>
 
       <table>
-        <!-- ISI 6 — judul tabel dan isi minimal tiga baris. -->
         <caption>Kegiatan saya</caption>
         <thead>
           <tr>
@@ -95,6 +74,11 @@
             <th scope="row">Majelis Perwakilan Kelas</th>
             <td>Ketua 1</td>
             <td>2024/2025</td>
+          </tr>
+          <tr>
+            <th scope="row">Google Student Ambassador</th>
+            <td>Student Ambassador</td>
+            <td>2026</td>
           </tr>
         </tbody>
       </table>
@@ -131,7 +115,6 @@
 
           <p>
             <label for="nim">NIM</label>
-            <!-- ISI 8 — ganti angka di dalam pattern dengan NIM Anda sendiri. -->
             <input id="nim" name="nim" type="text" inputmode="numeric"
                    pattern="[0-9]{8}" aria-describedby="nim-bantuan" required>
             <span id="nim-bantuan">Delapan digit angka, contoh 12345678.</span>
@@ -146,10 +129,6 @@
         </fieldset>
       </form>
     </section>
-
-    <!-- STRUKTUR TAMBAHAN (Lembar B.3) — tiga bagian baru, elemen semantik
-         berbeda satu sama lain, id belum terpakai, digayakan lewat token
-         yang sama di komponen.css. -->
 
     <section id="keterampilan">
       <h2>Keterampilan</h2>
@@ -186,11 +165,10 @@
   </main>
 
   <footer class="kaki">
-    <!-- ISI 9 — nama, NIM, tahun. -->
     <p>Firstly Javierrazel Hermawan · 25523158 · <time datetime="2026">2026</time></p>
   </footer>
 
-  <script type="module" src="js/dom.js"></script>
+  <!-- Single Entry Point untuk ES Modules -->
   <script type="module" src="js/app.js"></script>
 </body>
 </html>

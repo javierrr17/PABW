@@ -1,3 +1,4 @@
+// Pemilih DOM
 export const wadah = document.querySelector("#daftar");
 export const kosong = document.querySelector("#pesan-kosong");
 
@@ -8,25 +9,45 @@ export const inputNim = document.querySelector("#nim");
 export const inputPesan = document.querySelector("#pesan");
 export const tombolSubmit = elForm ? elForm.querySelector("button[type='submit']") : null;
 
+// Fungsi pembuat item list HTML
 export function buatItem(proyek) {
   const li = document.createElement("li");
   li.textContent = `${proyek.judul} - ${proyek.tahun}`;
   return li;
 }
 
-export function render(daftar) {
+// Fungsi saring membaca dari state.kategoriAktif
+export function saring(state) {
+  if (!state.kategoriAktif || state.kategoriAktif === "semua") {
+    return state.daftarProyek;
+  }
+  return state.daftarProyek.filter((proyek) =>
+    proyek.judul.toLowerCase().includes(state.kategoriAktif.toLowerCase())
+  );
+}
+
+// Fungsi render menerima objek state utuh (bukan array mentah)
+export function render(state) {
   if (!wadah) return;
+
+  // 1. Kosongkan wadah
   wadah.textContent = "";
 
-  if (daftar.length === 0) {
+  // Ambil array proyek yang sudah disaring dari objek state
+  const tampil = saring(state);
+
+  // 2. Periksa keadaan kosong
+  if (tampil.length === 0) {
     if (kosong) kosong.hidden = false;
     return;
   }
   if (kosong) kosong.hidden = true;
 
-  daftar.forEach((proyek) => wadah.append(buatItem(proyek)));
+  // 3. Isi ulang wadah dari array 'tampil'
+  tampil.forEach((proyek) => wadah.append(buatItem(proyek)));
 }
 
+// Fungsi validasi formulir
 export function validasiForm() {
   if (!elForm) return { sah: false };
 

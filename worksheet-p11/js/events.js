@@ -6,8 +6,17 @@ import {
   inputPesan,
   validasiForm,
 } from "./dom.js";
+import { aturUlang } from "./state.js";
 
 export function inisialisasiEvent() {
+  // Event listener untuk tombol Atur Ulang
+  const tombolReset = document.querySelector("#tombol-reset");
+  if (tombolReset) {
+    tombolReset.addEventListener("click", () => {
+      aturUlang();
+    });
+  }
+
   if (!elForm) return;
 
   elForm.addEventListener("input", () => {

@@ -1,5 +1,5 @@
 <script setup>
-import { state, pilihKategori, aturUlang } from '../state.js'
+import { state, pilihKategori } from '../state.js'
 
 const daftarKategori = [
   { id: 'semua', label: 'Semua' },
@@ -10,8 +10,6 @@ const daftarKategori = [
 </script>
 
 <template>
-  <button type="button" id="tombol-reset" @click="aturUlang">Atur Ulang Pilihan</button>
-
   <nav class="filter-kategori" aria-label="Filter kategori proyek">
     <button 
       v-for="kategori in daftarKategori" 

@@ -1,4 +1,8 @@
 <script setup>
+import { onMounted, watch } from 'vue'
+import { state } from './state.js'
+import { muat, simpan, aturUlang } from './simpanan.js'
+
 import KepalaProfil from './components/KepalaProfil.vue'
 import TombolFilter from './components/TombolFilter.vue'
 import DaftarProyek from './components/DaftarProyek.vue'
@@ -8,6 +12,22 @@ const identitas = {
   nama: 'Firstly Javierrazel Hermawan',
   peran: 'Mahasiswa Informatika Universitas Islam Indonesia.'
 }
+
+// 1. kait onMounted: membaca simpanan saat komponen dipasang
+onMounted(() => {
+  const isi = muat() // VERSI diperiksa di dalam muat(); bentuk lama dibuang
+  if (isi) state.kategoriAktif = isi.kategoriAktif
+})
+
+// 2. kait watch: otomatis menyimpan setiap kali state berubah
+watch(state, (nilai) => simpan(nilai), { deep: true })
+
+// 3. Fungsi tombol atur ulang
+function aturUlangPilihan() {
+  aturUlang()
+  state.kategoriAktif = 'semua'
+  simpan(state)
+}
 </script>
 
 <template>
@@ -16,6 +36,12 @@ const identitas = {
   <main id="utama">
     <section id="karya">
       <h2>Proyek</h2>
+      
+      <!-- Tombol atur ulang pilihan -->
+      <button type="button" id="tombol-reset" @click="aturUlangPilihan">
+        Atur Ulang Pilihan
+      </button>
+
       <TombolFilter />
       <DaftarProyek />
     </section>

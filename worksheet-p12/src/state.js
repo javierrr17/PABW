@@ -1,26 +1,26 @@
+import { reactive } from "vue";
 import { daftarProyek as dataAwalProyek } from "./data.js";
-import { render } from "./dom.js";
 
 const KUNCI = "pabw-p11";
 const VERSI = 2;
 
 // Fungsi menyimpan ke localStorage
-export function simpan(state) {
-  const isi = { versi: VERSI, kategoriAktif: state.kategoriAktif };
+export function simpan(stateObj) {
+  const isi = { versi: VERSI, kategoriAktif: stateObj.kategoriAktif };
   localStorage.setItem(KUNCI, JSON.stringify(isi));
 }
 
-// E.2 — Fungsi muat yang diperbarui dengan proteksi versi & try-catch (menggantikan versi D.1)
+// Fungsi muat dengan proteksi versi & try-catch
 export function muat() {
   try {
     const isi = JSON.parse(localStorage.getItem(KUNCI));
     if (isi?.versi !== VERSI) {
-      localStorage.removeItem(KUNCI); // bentuk lama: buang
+      localStorage.removeItem(KUNCI);
       return null;
     }
     return isi;
   } catch {
-    localStorage.removeItem(KUNCI); // isi rusak: buang
+    localStorage.removeItem(KUNCI);
     return null;
   }
 }
@@ -29,28 +29,26 @@ export function muat() {
 const simpanan = muat();
 const kategoriAwal = simpanan ? simpanan.kategoriAktif : "semua";
 
-// Objek state terpusat
-export const state = {
+// Objek state terpusat yang reaktif (menggunakan reactive dari Vue)
+export const state = reactive({
   daftarProyek: [...dataAwalProyek],
   kategoriAktif: kategoriAwal,
-};
+});
 
 export function ambilDaftarProyek() {
   return state.daftarProyek;
 }
 
-// Fungsi Atur Ulang: hapus simpanan, kembalikan state ke awal, lalu render ulang
+// Fungsi Atur Ulang: hapus simpanan & kembalikan state ke awal
 export function aturUlang() {
   localStorage.removeItem(KUNCI);
   state.kategoriAktif = "semua";
-  render(state);
 }
 
-// Fungsi pengubah state (satu pintu masuk)
+// Fungsi pengubah state
 export function pilihKategori(kategoriBaru) {
   state.kategoriAktif = kategoriBaru;
   simpan(state);
-  render(state);
 }
 
 // Penempelan ke window untuk testing via Console DevTools

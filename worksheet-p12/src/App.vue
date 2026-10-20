@@ -1,111 +1,26 @@
+<script setup>
+import KepalaProfil from './components/KepalaProfil.vue'
+import TombolFilter from './components/TombolFilter.vue'
+import DaftarProyek from './components/DaftarProyek.vue'
+import FormKontak from './components/FormKontak.vue'
+
+const identitas = {
+  nama: 'Firstly Javierrazel Hermawan',
+  peran: 'Mahasiswa Informatika Universitas Islam Indonesia.'
+}
+</script>
+
 <template>
-  <a class="lewati" href="#utama">Lewati ke konten utama</a>
-
-  <header class="kepala">
-    <input type="checkbox" id="tema" class="pengalih-tema">
-    <label for="tema" class="tombol-tema"><span class="ikon-tema" aria-hidden="true"></span> Ganti tema terang/gelap</label>
-
-    <h1>Firstly Javierrazel Hermawan</h1>
-    <p class="tagline">Mahasiswa Informatika Universitas Islam Indonesia.</p>
-    <nav aria-label="Navigasi utama">
-      <ul>
-        <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#karya">Karya</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
+  <KepalaProfil :profil="identitas" />
 
   <main id="utama">
-
-    <section id="tentang">
-      <h2>Tentang saya</h2>
-
-      <figure class="foto">
-        <img src="/media/Foto Saya.jpeg"
-             alt="Foto diri Firstly Javierrazel Hermawan memakai kemeja putih."
-             width="340" height="500" loading="lazy">
-        <figcaption></figcaption>
-      </figure>
-
-      <p>Saya mahasiswa Program Studi Informatika Universitas Islam Indonesia, Saya terdorong oleh visi besar untuk berkarier sebagai AI Engineer dan menciptakan inovasi berbasis kecerdasan buatan.
-        Saat ini saya juga mendalami pengembangan web dan UI/UX.
-      </p>
-
-      <table>
-        <caption>Kegiatan saya</caption>
-        <thead>
-          <tr>
-            <th scope="col">Kegiatan</th>
-            <th scope="col">Peran</th>
-            <th scope="col">Waktu</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Osis</th>
-            <td>Wakil ketua 2</td>
-            <td>2022/2023</td>
-          </tr>
-          <tr>
-            <th scope="row">Majelis Perwakilan Kelas</th>
-            <td>Ketua 1</td>
-            <td>2024/2025</td>
-          </tr>
-          <tr>
-            <th scope="row">Google Student Ambassador</th>
-            <td>Student Ambassador</td>
-            <td>2026</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
     <section id="karya">
       <h2>Proyek</h2>
-
-      <button type="button" id="tombol-reset">Atur Ulang Pilihan</button>
-
-      <ol id="daftar"></ol>
-      <p id="pesan-kosong" hidden>Belum ada proyek.</p>
+      <TombolFilter />
+      <DaftarProyek />
     </section>
 
-    <section id="kontak">
-      <h2>Hubungi saya</h2>
-      <p>Isi formulir berikut. Semua kolom bertanda wajib harus diisi.</p>
-
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Data pengirim</legend>
-
-          <p>
-            <label for="nama">Nama lengkap</label>
-            <input id="nama" name="nama" type="text"
-                   autocomplete="name" required>
-          </p>
-
-          <p>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email"
-                   autocomplete="email" required>
-          </p>
-
-          <p>
-            <label for="nim">NIM</label>
-            <input id="nim" name="nim" type="text" inputmode="numeric"
-                   pattern="[0-9]{8}" aria-describedby="nim-bantuan" required>
-            <span id="nim-bantuan">Delapan digit angka, contoh 12345678.</span>
-          </p>
-
-          <p>
-            <label for="pesan">Pesan</label>
-            <textarea id="pesan" name="pesan" rows="4" required></textarea>
-          </p>
-
-          <button type="submit">Kirim</button>
-        </fieldset>
-      </form>
-    </section>
+    <FormKontak />
 
     <section id="keterampilan">
       <h2>Keterampilan</h2>
@@ -138,13 +53,9 @@
         <figcaption>— Firstly Javierrazel Hermawan</figcaption>
       </figure>
     </section>
-
   </main>
 
   <footer class="kaki">
     <p>Firstly Javierrazel Hermawan · 25523158 · <time datetime="2026">2026</time></p>
   </footer>
 </template>
-
-<script setup>
-</script>
